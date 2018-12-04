@@ -14,7 +14,6 @@ var intervalId;
 
 // Functions & Variables.
 
-
 var startButton = function (){
     // Makes sure start button spam doesn't break the timing.
     clearInterval(intervalId);
@@ -78,8 +77,22 @@ var finishButton = function (){
 
 
 function displayResults(){
-
     $("#scores").show();
+
+/* I tried several things, along the lines of this to get the scores to update.
+    if ($("#correct").prop("checked", true)){
+
+        correctAnswers++;
+    };
+
+    else if ($("#wrong").prop("checked", true)){
+        wrongAnswers++;
+
+    else{
+        unanswered++;
+    }
+    };
+*/
     
     // Displays new HTML scores.
     $("#scores").html("<span> Correct Answers: " + correctAnswers + "</span> <br>");
