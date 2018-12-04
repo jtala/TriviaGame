@@ -1,3 +1,8 @@
+$(document).ready(function(){
+    $("#submit").hide();
+    $(".questions").hide();
+});
+
 // Global Variables.
 
 var correctAnswers= 0;
@@ -5,103 +10,94 @@ var wrongAnswers= 0;
 var unanswered = 0;
 
 var timeLeft = 60;
-
-var quizQuestions;
 var intervalId;
 
 // Functions & Variables.
 
 
 var startButton = function (){
+    // Makes sure start button spam doesn't break the timing.
+    clearInterval(intervalId);
+
+    //Set interval to continuously decrement time.
+    intervalId = setInterval(decrement, 1000);
+
     // Hides start Button.
     $("#start").remove();
 
-    //Starts 60 second timer.
-    setInterval(finishButton, 1000* 6);
-
-    //Decrement Time
-    timeLeft --;
-
-
-
-
-    //Displays timer to the user.
-    $("#timer").text("You have: " + timeLeft + " seconds left!");
-
-    // Replace HTML with the quizzes' questions.
-    $(".questions").append(quizQuestions);
-
-    // Show the submit Button
+    // Show submit button
     $("#submit").show();
-}  
 
+    // Show the questions.
+    $(".questions").show();
+
+    setInterval(finishButton, 1000* 60);
+
+
+};  
 
 var finishButton = function (){
-    // Takes all the inputs assign point accordingly.
-
+    //Stops.
+    clearInterval(intervalId);
+    
     // Removes Timer
-    $("#timer").remove();
+    $("#timer").hide();
 
     // Removes quiz HTML.
     $(".questions").remove();
 
-    // Displays new HTML results.
-    $("#results").html("<span> Correct Answers: " + correctAnswers + "</span> <br>");
-    $("#results").append("<span> Incorrect Answers: " + wrongAnswers + "</span><br>");
-    $("#results").append("<span> Unanswered Questions: " + unanswered + "</span>");
+    // Removes the Finish Button.
+    $("#submit").hide();
 
+    // Display Results function.
+    displayResults();
 
-}
+};
+
 
 // Functions
 
-function startQuiz(){
 
-    console.log("Hi");
+ //  The decrement function.
+ function decrement() {
 
-    // Start a minute timer.
-    setTimeout(finishButton, 1000* 60);
+    //Goes down every second.
+    timeLeft--;
 
-    //Display it in front of the user.
-    $("#timer").html ("You have: " + timeLeft  + " seconds left!");
+    //  Show the number in the #show-number tag.
+    $("#timer").html("<h2> You have " + timeLeft + " more seconds left!</h2>");
 
-    // Replace HTML with the quizzes' questions.
-    $(".questions").html(quizQuestions);
-    
-};
+    //Starts 60 second timer. Will click finish button automatically if time runs out.
+    //setInterval(finishButton, 1000* 2);
+
+    if (timeLeft === 0){
+        finishButton();
+    }
+
+ };
+
 
 function displayResults(){
-    // on Results.
 
-    // Display You have finished,
+    $("#scores").show();
+    
+    // Displays new HTML scores.
+    $("#scores").html("<span> Correct Answers: " + correctAnswers + "</span> <br>");
+    $("#scores").append("<span> Incorrect Answers: " + wrongAnswers + "</span><br>");
+    $("#scores").append("<span> Unanswered Questions: " + unanswered + "</span>");
 
-    // Show correct answers.
-
-    // Show incorrect answers.
-
-
-
-}
-
-
-
-
-
+};
 
 // Start Button. Starts timer and displays questions.
 $("#start").on("click", function() {
     startButton();
 
-
 });
 
-
-
-// Finish Button to display the results.
-
-$("#submit").on("click", function(){
-
+$("#submit").on("click", function() {
+    finishButton();
+    clearInterval(intervalId);
+    
 
 });
-
 

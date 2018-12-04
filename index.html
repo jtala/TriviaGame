@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
 
-  
- 
+   
 
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 </head>
 <body>
     <h1>Awesome Trivia of Awesomeness</h1>
@@ -20,11 +21,48 @@
 
     <div id="timer"></div>
 
-    <div class ="questions"></div>
+    <div class="questions">
+        <p> What is the capital of Connecticut?</p>
+        <input type ="radio" id="correct" name="question1" value="Hartford">Hartford<br>
+        <input type ="radio" id="wrong" name="question1" value="New York">New York<br>
+        <input type ="radio" id="wrong" name="question1" value="New Haven">New Haven<br>
+        <input type ="radio" id="wrong" name="question1" value="xd">xd<br>
 
-    <button id="submit"></button>
+        <p> What is the capital of Oregon?</p>
+        <input type ="radio" id="correct" name="question2" value="Salem">Salem<br>
+        <input type ="radio" id="wrong" name="question2" value="Portland">Portland<br>
+        <input type ="radio" id="wrong" name="question2" value="Eugene">Eugene<br>
+        <input type ="radio" id="wrong" name="question2" value="Beaverton">Beaverton<br>
 
-    <div id="results"></div>
+        <p>How many NBA teams are there?</p>
+        <input type ="radio" id="wrong" name="question3" value="20">20<br>
+        <input type ="radio" id="wrong" name="question3" value="25">28<br>
+        <input type ="radio" id="correct" name="question3" value="30">30<br>
+        <input type ="radio" id="wrong" name="question3" value="15">24<br>
+
+        <p>What Russian automatic gas-operated assault rifle was developed in the Soviet Union in 1947, and is still popularly used today?</p>
+        <input type ="radio" id="correct" name="question4" value="AK-47">AK-47<br>
+        <input type ="radio" id="wrong" name="question4" value="RPK">RPK<br>
+        <input type ="radio" id="wrong" name="question4" value="M16">M16<br>
+        <input type ="radio" id="wrong" name="question4" value="MG 42">MG 42<br>
+
+        <p>What was the FIRST Valve game to have VR?</p>
+        <input type ="radio" id="wrong" name="question5" value="Dota 2">Dota 2<br>
+        <input type ="radio" id="wrong" name="question5" value="Half-Life 2">Half-Life 2<br>
+        <input type ="radio" id="correct" name="question5" value="The Lab">The Lab<br>
+        <input type ="radio" id="wrong" name="question5" value="Destination">Destination<br>
+
+        <p>The humerus, paired radius, and ulna come together to form what joint?</p>
+        <input type ="radio" id="wrong" name="question6" value="Knee">Knee<br>
+        <input type ="radio" id="wrong" name="question6" value="Sholder">Sholder<br>
+        <input type ="radio" id="wrong" name="question6" value="Ankle">Ankle<br>
+        <input type ="radio" id="correct" name="question6" value="Elbow">Elbow<br>
+
+    </div>
+
+    <button id="submit">Submit your Answers!</button>
+
+    <div id="scores"></div>
     
     <!-- Jquery Link-->
     <script
